@@ -20,9 +20,11 @@ requirements:
   build:
     - python
     - setuptools
-    - toolchain
     - cyrus-sasl 2.1.26
     - cython
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   run:
     - python
     - cyrus-sasl 2.1.26
