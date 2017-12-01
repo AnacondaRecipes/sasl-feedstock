@@ -21,11 +21,11 @@ requirements:
     - python
     - setuptools
     - toolchain
-    - cyrus-sasl
+    - cyrus-sasl 2.1.26
     - cython
   run:
     - python
-    - cyrus-sasl
+    - cyrus-sasl 2.1.26
     - six
 
 test:
