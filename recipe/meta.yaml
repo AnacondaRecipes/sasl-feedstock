@@ -10,24 +10,25 @@ source:
   fn: v{{ version }}.tar.gz
   url: https://github.com/cloudera/python-sasl/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - 0001-include-saslutils.h-on-win-for-getpass.patch
 
 build:
   number: 1
-  script: python setup.py install --single-version-externally-managed --record record.txt
-  skip: True  # [win]
+  script: python setup.py install --single-version-externally-managed --record record.txt  # [unix]
 
 requirements:
-  host:
-    - python
-    - setuptools
-    - cyrus-sasl 2.1.26
-    - cython
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+  host:
+    - python
+    - setuptools
+    - cyrus-sasl
+    - cython
+    - msinttypes    # [win and vc<14]
   run:
     - python
-    - cyrus-sasl 2.1.26
     - six
 
 test:
