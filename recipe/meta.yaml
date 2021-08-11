@@ -12,6 +12,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - 0001-include-saslutils.h-on-win-for-getpass.patch
+    - fix_tp_print.patch
 
 build:
   number: 1
