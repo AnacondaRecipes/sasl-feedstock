@@ -35,6 +35,7 @@ requirements:
   run:
     - python
     - six
+    - cyrus-sasl
 
 test:
   imports:
