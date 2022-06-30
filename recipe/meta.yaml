@@ -16,6 +16,8 @@ source:
 
 build:
   number: 2
+  # no cyrus-sasl on s390x
+  skip: True   # [linux and s390x]
   script: python setup.py install --single-version-externally-managed --record record.txt  # [unix]
   ignore_run_exports:
     - cyrus-sasl
