@@ -18,7 +18,7 @@ build:
   number: 0
   # no cyrus-sasl on s390x
   skip: True   # [linux and s390x]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps -vv  # [unix]
   ignore_run_exports:
     - cyrus-sasl
 
