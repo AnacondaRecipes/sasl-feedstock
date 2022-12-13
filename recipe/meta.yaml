@@ -12,13 +12,13 @@ source:
   sha256: {{ sha256 }}
   patches:
     - 0001-include-saslutils.h-on-win-for-getpass.patch
-    - fix_tp_print.patch
+    - 0002-cythonize.patch
 
 build:
   number: 0
   # no cyrus-sasl on s390x
   skip: True   # [linux and s390x]
-  script: python setup.py install --single-version-externally-managed --record record.txt  # [unix]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   ignore_run_exports:
     - cyrus-sasl
 
@@ -30,10 +30,11 @@ requirements:
     - patch     # [not win]
   host:
     - python
+    - pip
     - setuptools
+    - wheel
     - cyrus-sasl
     - cython
-    - msinttypes    # [win and vc<14]
   run:
     - python
     - six
@@ -42,6 +43,10 @@ requirements:
 test:
   imports:
     - sasl
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/cloudera/python-sasl
