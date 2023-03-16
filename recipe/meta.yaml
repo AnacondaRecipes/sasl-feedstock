@@ -55,8 +55,11 @@ about:
   summary: Python wrapper for Cyrus SASL
   description: Python wrapper for Cyrus SASL
   dev_url: https://github.com/cloudera/python-sasl
+  doc_url: https://github.com/cloudera/python-sasl
 
 extra:
+  skip-lints:
+    - host_section_needs_exact_pinnings  # cython should be the most recent version
   recipe-maintainers:
     - mariusvniekerk
     - wesm
