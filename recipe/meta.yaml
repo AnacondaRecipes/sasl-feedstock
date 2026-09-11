@@ -30,8 +30,7 @@ requirements:
     - pip
     - setuptools
     - wheel
-    - cyrus-sasl 2.1.26  # [not ((osx and arm64) or (linux and aarch64))]
-    - cyrus-sasl 2.1.27  # [(osx and arm64) or (linux and aarch64)]
+    - cyrus-sasl 2.1.27
     - cython
   run:
     - python
