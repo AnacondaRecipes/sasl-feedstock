@@ -22,9 +22,9 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - patch     # [not win]
   host:
     - python
     - pip
