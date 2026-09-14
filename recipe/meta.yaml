@@ -18,7 +18,7 @@ build:
   number: 2
   # no cyrus-sasl on s390x
   skip: True   # [linux and s390x]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv  # [unix]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation # [unix]
 
 requirements:
   build:
@@ -30,7 +30,7 @@ requirements:
     - pip
     - setuptools
     - wheel
-    - cyrus-sasl 2.1.27
+    - cyrus-sasl {{ cyrus_sasl }}
     - cython
   run:
     - python
