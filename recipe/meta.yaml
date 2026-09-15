@@ -15,24 +15,22 @@ source:
     - 0002-cythonize.patch
 
 build:
-  number: 1
+  number: 2
   # no cyrus-sasl on s390x
   skip: True   # [linux and s390x]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv  # [unix]
+  script: {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation # [unix]
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - m2-patch  # [win]
-    - patch     # [not win]
   host:
     - python
     - pip
     - setuptools
     - wheel
-    - cyrus-sasl 2.1.26  # [not ((osx and arm64) or (linux and aarch64))]
-    - cyrus-sasl 2.1.27  # [(osx and arm64) or (linux and aarch64)]
+    - cyrus-sasl {{ cyrus_sasl }}
     - cython
   run:
     - python
